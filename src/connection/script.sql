@@ -18,3 +18,4 @@ CREATE TABLE vaga {
     obliqua boolean NOT NULL,
     PRIMARY KEY (idVaga)};
 
+/*comentario*/
