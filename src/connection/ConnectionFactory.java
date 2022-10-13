@@ -18,7 +18,7 @@ import java.sql.ResultSet;
  */
 public class ConnectionFactory {
     private final static String DRIVER = "com.mysql.jdbc.Driver";
-    private final static String URL = "jdbc:mysql://localhost:3306/estacionamento";
+    private final static String URL = "jdbc:mysql://localhost:3307/estacionamento";
     private final static String USER = "root";
     private final static String PASS = "";
     
