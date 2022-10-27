@@ -58,6 +58,11 @@ public class JFCadastrarVaga extends javax.swing.JFrame {
         jLabel4.setText("Tipo de Vaga");
 
         jTFNumero.setText("Número da vaga");
+        jTFNumero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFNumeroActionPerformed(evt);
+            }
+        });
 
         jTFRua.setText("Nome da Rua");
 
@@ -161,6 +166,10 @@ public class JFCadastrarVaga extends javax.swing.JFrame {
         
 // TODO add your handling code here:
     }//GEN-LAST:event_jBtnSalvarActionPerformed
+
+    private void jTFNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNumeroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFNumeroActionPerformed
 
     /**
      * @param args the command line arguments
