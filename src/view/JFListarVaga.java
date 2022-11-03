@@ -5,6 +5,7 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
 import model.dao.VagaDAO;
 import model.bean.Vaga;
 import javax.swing.table.DefaultTableModel;
@@ -78,6 +79,11 @@ public class JFListarVaga extends javax.swing.JFrame {
         });
 
         jBtnExcluir.setText("Excluir");
+        jBtnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnExcluirActionPerformed(evt);
+            }
+        });
 
         jBtnSalvar.setText("Salvar");
         jBtnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -136,6 +142,24 @@ public class JFListarVaga extends javax.swing.JFrame {
         
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowOpened
+
+    private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
+        if (jTVaga.getSelectedRow() != -1) {
+            int opcao = JOptionPane.showConfirmDialog(null,
+                    "Deseja excluir a vaga selecionada?", "Exclusão", JOptionPane.YES_NO_OPTION);
+            if(opcao == 0) {
+                VagaDAO dao = new VagaDAO();
+                Vaga v = new Vaga();
+                v.setIdVaga((int)jTVaga.getValueAt(jTVaga.getSelectedRow(), 0));
+                dao.delete(v);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione uma vaga!", "Erro", 
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        readJTable();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnExcluirActionPerformed
     public void readJTable() {
         DefaultTableModel modelo = (DefaultTableModel) jTVaga.getModel();
         modelo.setNumRows(0);

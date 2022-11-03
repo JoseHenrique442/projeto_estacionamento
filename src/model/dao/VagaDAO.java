@@ -62,4 +62,20 @@ public class VagaDAO {
         }
         return vagas;
     }
+    public void delete(Vaga v)  {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement("DELETE  FROM vaga where idVaga =?");
+            stmt.setInt(1, v.getIdVaga());
+            stmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Vaga excluída com sucesso");
+        }
+        catch (SQLException e) {
+            throw new RuntimeException("Erro ao deletar vaga: " + e);
+        }
+        finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }    
+    }
 }
