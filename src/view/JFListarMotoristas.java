@@ -5,6 +5,7 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
 import model.dao.MotoristaDAO;
 import model.bean.Motorista;
 import javax.swing.table.DefaultTableModel;
@@ -36,7 +37,7 @@ public class JFListarMotoristas extends javax.swing.JFrame {
         jTMotorista = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jBtnExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -70,7 +71,12 @@ public class JFListarMotoristas extends javax.swing.JFrame {
 
         jButton2.setText("jButton2");
 
-        jButton3.setText("jButton3");
+        jBtnExcluir.setText("Excluir");
+        jBtnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,34 +87,29 @@ public class JFListarMotoristas extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addContainerGap(247, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton1)
+                .addGap(78, 78, 78)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(223, 223, 223)
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)
-                        .addGap(39, 39, 39))))
+                        .addGap(18, 18, 18)
+                        .addComponent(jBtnExcluir)
+                        .addContainerGap())
+                    .addComponent(jScrollPane1)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                .addGap(42, 42, 42)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jBtnExcluir)
+                    .addComponent(jButton1))
                 .addContainerGap())
         );
 
@@ -122,6 +123,24 @@ public class JFListarMotoristas extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowOpened
+
+    private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
+        if (jTMotorista.getSelectedRow() != -1) {
+            int opcao = JOptionPane.showConfirmDialog(null,
+                    "Deseja excluir a vaga selecionada?", "Exclusão", JOptionPane.YES_NO_OPTION);
+            if(opcao == 0) {
+                MotoristaDAO dao = new MotoristaDAO();
+                Motorista v = new Motorista();
+                v.setIdMotorista((int)jTMotorista.getValueAt(jTMotorista.getSelectedRow(), 0));
+                dao.delete(v);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um motorista!", "Erro", 
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        readJTable();
+// TODO add your handling code here:
+    }//GEN-LAST:event_jBtnExcluirActionPerformed
     public void readJTable() {
         DefaultTableModel modelo = (DefaultTableModel) jTMotorista.getModel();
         modelo.setNumRows(0);
@@ -175,9 +194,9 @@ public class JFListarMotoristas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBtnExcluir;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTMotorista;
