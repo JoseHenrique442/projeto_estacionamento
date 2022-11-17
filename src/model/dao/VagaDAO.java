@@ -113,6 +113,7 @@ public class VagaDAO {
             stmt.setInt(4, v.getIdVaga());
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Vaga atualizada com sucesso!");
+            System.out.println(stmt);
         }
         catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao atualizar:" + e);

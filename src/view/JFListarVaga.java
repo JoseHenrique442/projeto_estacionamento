@@ -134,6 +134,17 @@ public class JFListarVaga extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnSalvarActionPerformed
 
     private void jBtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEditarActionPerformed
+        if (jTVaga.getSelectedRow() != -1) {
+            int vagaSelecionada = (int)jTVaga.getValueAt(jTVaga.getSelectedRow(), 0);
+            JFAtualizarVaga av = new JFAtualizarVaga(vagaSelecionada);
+            av.setVisible(true);
+            System.out.println(vagaSelecionada);
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione uma vaga!", "ERRO", JOptionPane.ERROR_MESSAGE);
+            
+        }
+        readJTable();
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtnEditarActionPerformed
 

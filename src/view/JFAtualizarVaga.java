@@ -13,6 +13,7 @@ import model.dao.VagaDAO;
  * @author 04031966040
  */
 public class JFAtualizarVaga extends javax.swing.JFrame {
+    private static int idVaga;
     
     /**
      * Creates new form JFAtualizarVaga
@@ -29,7 +30,9 @@ public class JFAtualizarVaga extends javax.swing.JFrame {
         } else if (v.isObliqua() == false) {
             jRDParalela.setSelected(true);
         }
+        
     }   
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -77,6 +80,11 @@ public class JFAtualizarVaga extends javax.swing.JFrame {
         });
 
         jTFRua.setText("Nome da Rua");
+        jTFRua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFRuaActionPerformed(evt);
+            }
+        });
 
         bGTipoVaga.add(jRBObliquo);
         jRBObliquo.setText("Oblíqua");
@@ -119,16 +127,17 @@ public class JFAtualizarVaga extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTFNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(jTFRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jRBObliquo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRDParalela)))
+                            .addComponent(jLabel4)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTFRua, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTFNumero, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jRBObliquo)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jRDParalela))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(97, Short.MAX_VALUE)
@@ -194,9 +203,24 @@ public class JFAtualizarVaga extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSalvarActionPerformed
-         // TODO add your handling code here:
+        Vaga v = new Vaga();
+        VagaDAO vdao = new VagaDAO();
+        v.setIdVaga(Integer.parseInt(lblIdVaga.getText()));
+        v.setNumero(Integer.parseInt(jTFNumero.getText()));
+        v.setRua(jTFRua.getText());
+        if (jRBObliquo.isSelected()) {
+            v.setObliqua(true);
+        } else if (jRDParalela.isSelected()) {
+            v.setObliqua(false);
+        }
+        vdao.update(v);
+        // TODO add your handling code here:
     }//GEN-LAST:event_jBtnSalvarActionPerformed
 
+    private void jTFRuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFRuaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFRuaActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -227,7 +251,8 @@ public class JFAtualizarVaga extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFAtualizarVaga().setVisible(true);
+                JFAtualizarVaga frame = new JFAtualizarVaga(idVaga);
+                frame.setVisible(true);
             }
         });
     }
