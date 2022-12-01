@@ -37,9 +37,10 @@ public class JFListarVaga extends javax.swing.JFrame {
         jTVaga = new javax.swing.JTable();
         jBtnEditar = new javax.swing.JButton();
         jBtnExcluir = new javax.swing.JButton();
-        jBtnSalvar = new javax.swing.JButton();
+        jBtnCadastrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Listar Vaga");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -85,10 +86,10 @@ public class JFListarVaga extends javax.swing.JFrame {
             }
         });
 
-        jBtnSalvar.setText("Salvar");
-        jBtnSalvar.addActionListener(new java.awt.event.ActionListener() {
+        jBtnCadastrar.setText("Cadastrar");
+        jBtnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnSalvarActionPerformed(evt);
+                jBtnCadastrarActionPerformed(evt);
             }
         });
 
@@ -104,7 +105,7 @@ public class JFListarVaga extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addComponent(jBtnSalvar)
+                        .addComponent(jBtnCadastrar)
                         .addGap(41, 41, 41)
                         .addComponent(jBtnEditar)
                         .addGap(38, 38, 38)
@@ -117,10 +118,10 @@ public class JFListarVaga extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBtnSalvar)
+                    .addComponent(jBtnCadastrar)
                     .addComponent(jBtnExcluir)
                     .addComponent(jBtnEditar))
                 .addContainerGap())
@@ -129,9 +130,11 @@ public class JFListarVaga extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBtnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSalvarActionPerformed
+    private void jBtnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCadastrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jBtnSalvarActionPerformed
+        JFCadastrarVaga cv = new JFCadastrarVaga();
+        cv.setVisible(true);
+    }//GEN-LAST:event_jBtnCadastrarActionPerformed
 
     private void jBtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEditarActionPerformed
         if (jTVaga.getSelectedRow() != -1) {
@@ -221,9 +224,9 @@ public class JFListarVaga extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBtnCadastrar;
     private javax.swing.JButton jBtnEditar;
     private javax.swing.JButton jBtnExcluir;
-    private javax.swing.JButton jBtnSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTVaga;

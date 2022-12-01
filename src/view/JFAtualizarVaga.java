@@ -58,7 +58,8 @@ public class JFAtualizarVaga extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         lblIdVaga = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Atualizar Vaga");
 
         jLabel1.setFont(new java.awt.Font("Nirmala UI", 1, 36)); // NOI18N
         jLabel1.setText("Atualizar Vaga");
@@ -106,6 +107,11 @@ public class JFAtualizarVaga extends javax.swing.JFrame {
         });
 
         jBtnLimpar.setText("Limpar");
+        jBtnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnLimparActionPerformed(evt);
+            }
+        });
 
         jBtnSalvar.setText("Salvar");
         jBtnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -199,6 +205,7 @@ public class JFAtualizarVaga extends javax.swing.JFrame {
     }//GEN-LAST:event_jRDParalelaActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
+        dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
@@ -220,6 +227,14 @@ public class JFAtualizarVaga extends javax.swing.JFrame {
     private void jTFRuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFRuaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFRuaActionPerformed
+
+    private void jBtnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnLimparActionPerformed
+        jTFRua.setText("");
+        jTFNumero.setText("");
+        bGTipoVaga.clearSelection();
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnLimparActionPerformed
     
     /**
      * @param args the command line arguments

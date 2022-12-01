@@ -29,8 +29,7 @@ public class JFAtualizarMotorista extends javax.swing.JFrame {
         jTFCpf.setText(m.getCpf());
         jTFCelular.setText(m.getCelular());
         jTFEmail.setText(m.getEmail());
-        jTFSenha.setText(m.getSenha());
-        
+        jTFSenha.setText(m.getSenha());        
     }
 
     /**
@@ -64,6 +63,7 @@ public class JFAtualizarMotorista extends javax.swing.JFrame {
         jTFSenha = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Atualizar Motorista");
 
         jLabel1.setFont(new java.awt.Font("Nirmala UI", 1, 36)); // NOI18N
         jLabel1.setText("Atualizar Motora");
@@ -96,6 +96,11 @@ public class JFAtualizarMotorista extends javax.swing.JFrame {
         });
 
         jBtnLimpar.setText("Limpar");
+        jBtnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnLimparActionPerformed(evt);
+            }
+        });
 
         jBtnSalvar.setText("Salvar");
         jBtnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -258,6 +263,7 @@ public class JFAtualizarMotorista extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFGeneroActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
+        dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
@@ -295,6 +301,17 @@ public class JFAtualizarMotorista extends javax.swing.JFrame {
     private void jTFSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFSenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFSenhaActionPerformed
+
+    private void jBtnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnLimparActionPerformed
+        jTFNome.setText("");
+        jTFGenero.setText("");
+        jTFRg.setText("");
+        jTFCpf.setText("");
+        jTFCelular.setText("");
+        jTFEmail.setText("");
+        jTFSenha.setText("");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnLimparActionPerformed
 
     /**
      * @param args the command line arguments
